@@ -1,0 +1,13 @@
+schema: schema.graphql
+
+models:
+  Account:
+    model: github.com/yash170603/goservices/graphql.Account
+    fields:
+      orders:
+       resolver: true
+
+
+
+
+#  this is graphql generator command file
