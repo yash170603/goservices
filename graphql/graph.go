@@ -1,6 +1,10 @@
 package main
 
 import (
+	// "goservices/account"
+	// "goservices/catalog"
+	// "goservices/order"
+
 	"github.com/99designs/gqlgen/graphql"
 	"github.com/yash170603/goservices/account"
 	"github.com/yash170603/goservices/catalog"
@@ -45,6 +49,12 @@ func newGraphqlServer(accountUrl, catalogUrl, orderUrl string) (*Server, error) 
 
 func (s *Server) Mutation() MutationResolver {
 	return &mutationResolver{
+		server: s,
+	}
+}
+
+func (s *Server) Query() QueryResolver {
+	return &QueryResolver{
 		server: s,
 	}
 }
