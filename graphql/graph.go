@@ -1,10 +1,6 @@
 package main
 
 import (
-	// "goservices/account"
-	// "goservices/catalog"
-	// "goservices/order"
-
 	"github.com/99designs/gqlgen/graphql"
 	"github.com/yash170603/goservices/account"
 	"github.com/yash170603/goservices/catalog"
@@ -54,7 +50,19 @@ func (s *Server) Mutation() MutationResolver {
 }
 
 func (s *Server) Query() QueryResolver {
-	return &QueryResolver{
+	return &queryResolver{
 		server: s,
 	}
+}
+
+func (s *Server) Account() AccountResolver {
+	return &accountResolver{
+		server: s,
+	}
+}
+
+func (S *Server) ToExecutableSchema() graphql.ExecutableSchema {
+	return NewExecutableSchema(Config{
+		Resolvers: S,
+	})
 }
