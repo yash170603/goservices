@@ -13,7 +13,7 @@ type Server struct {
 	orderClient   *order.Client
 }
 
-func newGraphqlServer(accountUrl, catalogUrl, orderUrl string) (*Server, error) {
+func NewGraphqlServer(accountUrl, catalogUrl, orderUrl string) (*Server, error) {
 
 	var _ = graphql.HandlerExtension(nil)
 	accountClient, err := account.NewClient(accountUrl)
